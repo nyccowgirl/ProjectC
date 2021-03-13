@@ -216,7 +216,7 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 	 *
 	 * @return An array containing all the entries in the list
 	 */
-	public T[] toArray() {
+	private T[] toArray() {
 		checkInitialization();
 
 		// The cast is safe because the new list contains null entries
@@ -226,8 +226,8 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		int index = 0;
 		Node currentNode = head;
 		while ((index < numberOfEntries) && (currentNode != null)) {
-			result[index] = currentNode.data;
-			currentNode = currentNode.next;
+			result[index] = currentNode.getData();
+			currentNode = currentNode.getNextNode();
 			index++;
 		}
 
