@@ -129,7 +129,14 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 
 	@Override
 	public boolean contains(T anEntry) {
-		return false;
+		checkInitialization();
+		boolean result = false;
+		// ADD CODE FOR ITERATIVE VERSION
+
+		// Recursive version
+		result = containsHelper(anEntry, head);
+
+		return result;
 	}
 
 
@@ -240,10 +247,20 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 	}
 
 	// Helper method to recursive version of toArray() method
-	private void toArrayHelper(T[] array, int index, Node firstNode) {
-		if (firstNode != null) {				// Recursive case
-			array[index] = firstNode.getData();
-			toArrayHelper(array, index + 1, firstNode.getNextNode());
+	private void toArrayHelper(T[] array, int index, Node current) {
+		if (current != null) {				// Recursive case
+			array[index] = current.getData();
+			toArrayHelper(array, index + 1, current.getNextNode());
+		}
+	}
+
+
+	// Helper method to recursive version of contains(T anEntry) method
+	private boolean containsHelper(T anEntry, Node current) {
+		if (current == null) {				// Base case
+			return false;
+		} else {
+			return (current.getData().equals(anEntry) || containsHelper(anEntry, current.getNextNode()));
 		}
 	}
 

@@ -45,10 +45,10 @@ public class ProjectCDriver {
 		testDisplayMatch(list, "[7, 9, 5, 5, 3, 2, 1, 9, 8, 6]\tsize=10\tcapacity=10\thead=7 tail=6");
 
 
-//		System.out.println("\n*****************************TESTING CLEAR*****************************");
-//		list.clear();
-//		testIsEmptyFull(list, true, false);
-//		testDisplayMatch(list, "[]\tsize=0\tcapacity=10");
+		System.out.println("\n*****************************TESTING CLEAR*****************************");
+		list.clear();
+		testIsEmptyFull(list, true, false);
+		testDisplayMatch(list, "[]\tsize=0\tcapacity=10");
 		
 		
 		System.out.println("\n*****************************TESTING ADD TO FRONT*****************************");
@@ -78,23 +78,23 @@ public class ProjectCDriver {
 		testDisplayMatch(list, "[1, 8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=10\tcapacity=10\thead=1 tail=2");
 
 	
-//		System.out.println("\n*****************************TESTING CONTAINS*****************************");
-//		clearAndRefillTheList(list, new Integer[] {1, 8, 3, 4, 5, 9, 7, 3, 4, 2});
-//
-//
-//		// parameter 1: the list
-//		// parameter 2: the element to look for
-//		// parameter 3: the expected result (true if the list contains that element, false otherwise)
-//		// parameter 4: a description of the test
-//		testContains(list, 1, true, "element is in the first position");
-//		testContains(list, 2, true, "element is in the last position");
-//		testContains(list, 5, true, "element is in the middle");
-//		testContains(list, 3, true, "element is in the list more than once");
-//		testContains(list, 0, false, "element is not in the list");
-//
-//		testDisplayMatch(list, "[1, 8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=10\tcapacity=10\thead=1 tail=2");
-//
-//
+		System.out.println("\n*****************************TESTING CONTAINS*****************************");
+		clearAndRefillTheList(list, new Integer[] {1, 8, 3, 4, 5, 9, 7, 3, 4, 2});
+
+
+		// parameter 1: the list
+		// parameter 2: the element to look for
+		// parameter 3: the expected result (true if the list contains that element, false otherwise)
+		// parameter 4: a description of the test
+		testContains(list, 1, true, "element is in the first position");
+		testContains(list, 2, true, "element is in the last position");
+		testContains(list, 5, true, "element is in the middle");
+		testContains(list, 3, true, "element is in the list more than once");
+		testContains(list, 0, false, "element is not in the list");
+
+		testDisplayMatch(list, "[1, 8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=10\tcapacity=10\thead=1 tail=2");
+
+
 //		System.out.println("\n*****************************TESTING INDEX OF*****************************");
 //		clearAndRefillTheList(list, new Integer[] {1, 8, 3, 4, 5, 9, 7, 3, 4, 2});
 //
@@ -266,13 +266,13 @@ public class ProjectCDriver {
 		}
 	}
 
-//	public static <T> void clearAndRefillTheList(FrontBackCappedListInterface<T> list, T[] valuesToAdd) {
-//		list.clear();
-//		for(T value : valuesToAdd) {
-//			list.addBack(value);
-//		}
-//		System.out.println("\nList cleared and refilled: " + list);
-//	}
+	public static <T> void clearAndRefillTheList(FrontBackCappedListInterface<T> list, T[] valuesToAdd) {
+		list.clear();
+		for(T value : valuesToAdd) {
+			list.addBack(value);
+		}
+		System.out.println("\nList cleared and refilled: " + list);
+	}
 
 	public static <T> void testAdd(FrontBackCappedListInterface<T> list, AddRemovePosition positionToAdd, T[] valuesToAdd, boolean expectedResult, String testDescription) {
 		System.out.println("\nTrying to add " + Arrays.toString(valuesToAdd) + " to " + positionToAdd + " of list");
@@ -305,15 +305,15 @@ public class ProjectCDriver {
 		}
 	}
 
-//	public static <T> void testContains(FrontBackCappedListInterface<T> list, T element, boolean expectedResult, String testDescription) {
-//		boolean actualResult = list.contains(element);
-//		System.out.println("\nTarget = " + element + " in List: " + list);
-//		System.out.println("Expected result=" + expectedResult);
-//		System.out.println("Actual result=  " + actualResult);
-//		if(expectedResult!=actualResult) {
-//			System.out.println("*****Test failed when checking if list contained " + element + "; test:" + testDescription);
-//		}
-//	}
+	public static <T> void testContains(FrontBackCappedListInterface<T> list, T element, boolean expectedResult, String testDescription) {
+		boolean actualResult = list.contains(element);
+		System.out.println("\nTarget = " + element + " in List: " + list);
+		System.out.println("Expected result=" + expectedResult);
+		System.out.println("Actual result=  " + actualResult);
+		if(expectedResult!=actualResult) {
+			System.out.println("*****Test failed when checking if list contained " + element + "; test:" + testDescription);
+		}
+	}
 
 //	public static <T> void testIndexOf(FrontBackCappedListInterface<T> list, IndexPosition indexPosition, T element, String testDescription) {
 //		testIndexOf(list, indexPosition, element, -1, testDescription);
