@@ -2,9 +2,10 @@
  * A class that implements the ADT list with front or back entry or removal and capped to a given capacity,
  * using linked nodes.
  *
- * Trang Hoang (sect. 933)
- * Jared Roussel (sect. 933)
- * Brent Gannetta (sect. 932)
+ * @author Trang Hoang (sect. 933)
+ * @author Jared Roussel (sect. 933)
+ * @author Brent Gannetta (sect. 932)
+ * @version 1.1
  */
 
 import java.util.*;
@@ -35,8 +36,9 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 
 
 	/**
-	 * Adds an entry to the beginning of the list if it is not full. If the entry is successfully added, entries
-	 * currently in the list are shifted back, and the list size is increased by 1.
+	 * Adds an entry to the beginning of the list if it is not full. If the list is empty, the head
+	 * becomes the tail. If the entry is successfully added, entries currently in the list are shifted
+	 * back, and the list size is increased by 1.
 	 *
 	 * @param newEntry The object to be added as a new entry.
 	 * @return True if the entry was added; otherwise, returns false if the list is full.
@@ -49,9 +51,9 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 
 		if (isFull()) {
 			result = false;
-		} else if (isEmpty()) {		// Assertion: result is true
+		} else if (isEmpty()) {				// Assertion: result is true
 			head = newNode;
-			tail = head;			// First node to an empty list becomes the tail.
+			tail = head;					// First node to an empty list becomes the tail
 			numberOfEntries++;
 		} else {
 			newNode.setNextNode(head);
@@ -61,9 +63,34 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		return result;
 	}
 
+
+	/**
+	 * Adds an entry to the end of the list if it is not full. If the list is empty, the tail becomes
+	 * the head. If the entry is successfully added, entries currently in the list are shifted forward,
+	 * and the list size is increased by 1.
+	 *
+	 * @param newEntry The object to be added as a new entry.
+	 * @return True if the entry was added; otherwise, returns false if the list is full.
+	 */
 	@Override
 	public boolean addBack(T newEntry) {
-		return false;
+		checkInitialization();
+		Node newNode = new Node(newEntry);
+		boolean result = true;
+
+		if (isFull()) {
+			result = false;
+		} else if (isEmpty()) {				// Assertion: result is true
+			tail = newNode;
+			head = tail;					// First node to an empty list becomes the head
+			numberOfEntries++;
+		} else {
+			tail.setNextNode(newNode);
+			tail = newNode;					// New node becomes the tail
+			numberOfEntries++;
+		}
+
+		return result;
 	}
 
 	@Override
@@ -76,9 +103,13 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		return null;
 	}
 
+
+	/**
+	 * Clears the list to an empty list.
+	 */
 	@Override
 	public void clear() {
-
+		initializeDataFields();
 	}
 
 	@Override
@@ -205,9 +236,9 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 
 
 	/*
-	***********
+	****************
 	NODE CLASS:
-	***********
+	****************
 	 */
 
 	public class Node {
@@ -239,5 +270,5 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		private void setNextNode(Node nextNode) {
 			next = nextNode;
 		} 
-	} 
-}
+	} // end Node
+} // end LinkedFrontBackCappedList

@@ -20,31 +20,31 @@ public class ProjectCDriver {
 		testDisplayMatch(list, "[]\tsize=0\tcapacity=10");
 
 		
-//		System.out.println("\n*****************************TESTING ADD TO BACK*****************************");
-//		// parameter 1: the list
-//		// parameter 2: indicates if we are adding to the front or back
-//		// parameter 3: the values to add; values are added from the array beginning (index 0) to end;
-//		//			    for example, {1, 2, 3} will first add 1 to the back, then 2 to the back, then 3 to the back
-//		// parameter 4: expected return value (true if the element was added, false otherwise)
-//		// parameter 5: a description of the test
-//		testAdd(list, AddRemovePosition.BACK, new Integer[] {7}, true, "addBack to empty list");
-//		testDisplayMatch(list, "[7]\tsize=1\tcapacity=10\thead=7 tail=7");
-//
-//		testAdd(list, AddRemovePosition.BACK, new Integer[] {9, 5}, true, "addBack to singleton list");
-//		testIsEmptyFull(list, false, false);
-//		testSize(list, 3);
-//		testDisplayMatch(list, "[7, 9, 5]\tsize=3\tcapacity=10\thead=7 tail=5");
-//
-//		testAdd(list, AddRemovePosition.BACK, new Integer[] {5, 3, 2, 1, 9, 8, 6}, true, "addBack to fill the list");
-//		testIsEmptyFull(list, false, true);
-//		testSize(list, 10);
-//		testDisplayMatch(list, "[7, 9, 5, 5, 3, 2, 1, 9, 8, 6]\tsize=10\tcapacity=10\thead=7 tail=6");
-//
-//		testAdd(list, AddRemovePosition.BACK, new Integer[] {4}, false, "addBack to full list");
-//		testSize(list, 10);
-//		testDisplayMatch(list, "[7, 9, 5, 5, 3, 2, 1, 9, 8, 6]\tsize=10\tcapacity=10\thead=7 tail=6");
-//
-//
+		System.out.println("\n*****************************TESTING ADD TO BACK*****************************");
+		// parameter 1: the list
+		// parameter 2: indicates if we are adding to the front or back
+		// parameter 3: the values to add; values are added from the array beginning (index 0) to end;
+		//			    for example, {1, 2, 3} will first add 1 to the back, then 2 to the back, then 3 to the back
+		// parameter 4: expected return value (true if the element was added, false otherwise)
+		// parameter 5: a description of the test
+		testAdd(list, AddRemovePosition.BACK, new Integer[] {7}, true, "addBack to empty list");
+		testDisplayMatch(list, "[7]\tsize=1\tcapacity=10\thead=7 tail=7");
+
+		testAdd(list, AddRemovePosition.BACK, new Integer[] {9, 5}, true, "addBack to singleton list");
+		testIsEmptyFull(list, false, false);
+		testSize(list, 3);
+		testDisplayMatch(list, "[7, 9, 5]\tsize=3\tcapacity=10\thead=7 tail=5");
+
+		testAdd(list, AddRemovePosition.BACK, new Integer[] {5, 3, 2, 1, 9, 8, 6}, true, "addBack to fill the list");
+		testIsEmptyFull(list, false, true);
+		testSize(list, 10);
+		testDisplayMatch(list, "[7, 9, 5, 5, 3, 2, 1, 9, 8, 6]\tsize=10\tcapacity=10\thead=7 tail=6");
+
+		testAdd(list, AddRemovePosition.BACK, new Integer[] {4}, false, "addBack to full list");
+		testSize(list, 10);
+		testDisplayMatch(list, "[7, 9, 5, 5, 3, 2, 1, 9, 8, 6]\tsize=10\tcapacity=10\thead=7 tail=6");
+
+
 //		System.out.println("\n*****************************TESTING CLEAR*****************************");
 //		list.clear();
 //		testIsEmptyFull(list, true, false);
@@ -246,6 +246,7 @@ public class ProjectCDriver {
 		System.out.println("\nExpected output: " + expectedOutput);
 		System.out.println("Actual output:   " + list.toString() +"\n");
 	}
+
 	public static <T> void testIsEmptyFull(FrontBackCappedListInterface<T> list, boolean expectedEmptyResult, boolean expectedFullResult) {
 		System.out.println("\nisEmpty test: expected=" + expectedEmptyResult + " actual=" + list.isEmpty());
 		if(expectedEmptyResult !=  list.isEmpty()) {
@@ -257,12 +258,14 @@ public class ProjectCDriver {
 			System.out.println("*****Test failed for isFull on list: " + list);
 		}
 	}
+
 	public static <T> void testSize(FrontBackCappedListInterface<T> list, int expectedSize) {
 		System.out.println("\nSize test: expected=" + expectedSize + " actual=" + list.size() );
 		if(expectedSize !=  list.size()) {
 			System.out.println("*****Test failed for size on list: " + list);
 		}
 	}
+
 //	public static <T> void clearAndRefillTheList(FrontBackCappedListInterface<T> list, T[] valuesToAdd) {
 //		list.clear();
 //		for(T value : valuesToAdd) {
@@ -270,6 +273,7 @@ public class ProjectCDriver {
 //		}
 //		System.out.println("\nList cleared and refilled: " + list);
 //	}
+
 	public static <T> void testAdd(FrontBackCappedListInterface<T> list, AddRemovePosition positionToAdd, T[] valuesToAdd, boolean expectedResult, String testDescription) {
 		System.out.println("\nTrying to add " + Arrays.toString(valuesToAdd) + " to " + positionToAdd + " of list");
 		System.out.println("List before adding: " + list);
@@ -299,9 +303,8 @@ public class ProjectCDriver {
 				System.out.println("     Expected after size=" + expectedAfterSize + "\tActual after size=" + afterSize);
 			}
 		}
-
-
 	}
+
 //	public static <T> void testContains(FrontBackCappedListInterface<T> list, T element, boolean expectedResult, String testDescription) {
 //		boolean actualResult = list.contains(element);
 //		System.out.println("\nTarget = " + element + " in List: " + list);
@@ -311,9 +314,11 @@ public class ProjectCDriver {
 //			System.out.println("*****Test failed when checking if list contained " + element + "; test:" + testDescription);
 //		}
 //	}
+
 //	public static <T> void testIndexOf(FrontBackCappedListInterface<T> list, IndexPosition indexPosition, T element, String testDescription) {
 //		testIndexOf(list, indexPosition, element, -1, testDescription);
 //	}
+
 //	public static <T> void testIndexOf(FrontBackCappedListInterface<T> list, IndexPosition indexPosition, T element, int expectedResult, String testDescription) {
 //		int actualResult;
 //		if(indexPosition==IndexPosition.FIRST) {
@@ -332,9 +337,11 @@ public class ProjectCDriver {
 //			System.out.println("*****Test failed when finding the index; test:" + testDescription);
 //		}
 //	}
+
 //	public static <T> void testGetEntry(FrontBackCappedListInterface<T> list, int position, String testDescription) {
 //		testGetEntry(list, position, null, testDescription);
 //	}
+
 //	public static <T> void testGetEntry(FrontBackCappedListInterface<T> list, int position, T expectedResult, String testDescription) {
 //		T actualResult = list.getEntry(position);
 //
@@ -348,9 +355,11 @@ public class ProjectCDriver {
 //			System.out.println("*****Test failed to get the expected element for test:" + testDescription);
 //		}
 //	}
+
 //	public static <T> void testRemove(FrontBackCappedListInterface<T> list, AddRemovePosition positionToRemove, String testDescription) {
 //		testRemove(list, positionToRemove, null, testDescription);
 //	}
+
 //	public static <T> void testRemove(FrontBackCappedListInterface<T> list, AddRemovePosition positionToRemove, T expectedResult, String testDescription) {
 //		System.out.println("\nTrying to remove from the " + positionToRemove + " of list");
 //		System.out.println("List before removing: " + list);
@@ -382,6 +391,7 @@ public class ProjectCDriver {
 //			System.out.println("     Expected after size=" + expectedAfterSize + "\tActual after size=" + actualAfterSize);
 //		}
 //	}
+
 //	public static <T extends Comparable<? super T>> void testCompareTo(T[] contentsListA, int sizeA, T[] contentsListB, int sizeB, PosNegZero expectedResult, String testDescription) {
 //		LinkedFrontBackCappedList<T> listA = new LinkedFrontBackCappedList<>(sizeA);
 //		for(T item : contentsListA) {
@@ -417,13 +427,15 @@ public class ProjectCDriver {
 			return super.toString().toLowerCase();
 		}
 	}
-//	public static enum IndexPosition {
-//		FIRST, LAST;
-//
-//		public String toString() {
-//			return super.toString().toLowerCase();
-//		}
-//	}
+
+	public static enum IndexPosition {
+		FIRST, LAST;
+
+		public String toString() {
+			return super.toString().toLowerCase();
+		}
+	}
+
 	public static enum PosNegZero {
 		POSITIVE("invoking List A > parameter List B"), NEGATIVE("invoking List A < parameter List B"), ZERO("the two lists are \"equal\"");
 
