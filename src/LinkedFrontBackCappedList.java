@@ -224,14 +224,27 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		T[] result = (T[]) new Object[numberOfEntries]; // TO DO: change to Comparable[] for extra credit
 
 		int index = 0;
-		Node currentNode = head;
-		while ((index < numberOfEntries) && (currentNode != null)) {
-			result[index] = currentNode.getData();
-			currentNode = currentNode.getNextNode();
-			index++;
-		}
+
+		// Iterative version
+//		Node currentNode = head;
+//		while ((index < numberOfEntries) && (currentNode != null)) {
+//			result[index] = currentNode.getData();
+//			currentNode = currentNode.getNextNode();
+//			index++;
+//		}
+
+		// Recursive version
+		toArrayHelper(result, index, head);
 
 		return result;
+	}
+
+	// Helper method to recursive version of toArray() method
+	private void toArrayHelper(T[] array, int index, Node firstNode) {
+		if (firstNode != null) {				// Recursive case
+			array[index] = firstNode.getData();
+			toArrayHelper(array, index + 1, firstNode.getNextNode());
+		}
 	}
 
 
