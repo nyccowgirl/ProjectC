@@ -14,12 +14,12 @@ public class ProjectCDriver {
 		// parameter 1: the list
 		// parameter 2: the expected size of the list
 		testSize(list, 0);
-		
+
 		// parameter 1: the list
 		// parameter 2: the expected String returned from the toString method
 		testDisplayMatch(list, "[]\tsize=0\tcapacity=10");
 
-		
+
 		System.out.println("\n*****************************TESTING ADD TO BACK*****************************");
 		// parameter 1: the list
 		// parameter 2: indicates if we are adding to the front or back
@@ -49,35 +49,35 @@ public class ProjectCDriver {
 		list.clear();
 		testIsEmptyFull(list, true, false);
 		testDisplayMatch(list, "[]\tsize=0\tcapacity=10");
-		
-		
+
+
 		System.out.println("\n*****************************TESTING ADD TO FRONT*****************************");
 		list.clear();
 
 		// parameter 1: the list
 		// parameter 2: indicates if we are adding to the front or back
-		// parameter 3: the values to add; values are added from the array beginning (index 0) to end; 
+		// parameter 3: the values to add; values are added from the array beginning (index 0) to end;
 		//			    for example, {1, 2, 3} will first add 1 to the front, then 2 to the front, then 3 to the front
 		// parameter 4: expected return value (true if the element was added, false otherwise)
 		// parameter 5: a description of the test
 		testAdd(list, AddRemovePosition.FRONT, new Integer[] {2}, true, "addFront to empty list");
 		testDisplayMatch(list, "[2]\tsize=1\tcapacity=10\thead=2 tail=2");
-		
+
 		testAdd(list, AddRemovePosition.FRONT, new Integer[] {4, 3}, true, "addFront to singleton list");
 		testIsEmptyFull(list, false, false);
 		testSize(list, 3);
 		testDisplayMatch(list, "[3, 4, 2]\tsize=3\tcapacity=10\thead=3 tail=2");
-		
+
 		testAdd(list, AddRemovePosition.FRONT, new Integer[] {7, 9, 5, 4, 3, 8, 1}, true, "addFront to fill the list");
 		testIsEmptyFull(list, false, true);
 		testSize(list, 10);
 		testDisplayMatch(list, "[1, 8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=10\tcapacity=10\thead=1 tail=2");
-	
+
 		testAdd(list, AddRemovePosition.FRONT, new Integer[] {4}, false, "addFront to full list");
 		testSize(list, 10);
 		testDisplayMatch(list, "[1, 8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=10\tcapacity=10\thead=1 tail=2");
 
-	
+
 		System.out.println("\n*****************************TESTING CONTAINS*****************************");
 		clearAndRefillTheList(list, new Integer[] {1, 8, 3, 4, 5, 9, 7, 3, 4, 2});
 
@@ -122,74 +122,74 @@ public class ProjectCDriver {
 //		testIndexOf(list, IndexPosition.LAST, 0, "element not in the list");
 //
 //		testDisplayMatch(list, "[1, 8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=10\tcapacity=10\thead=1 tail=2");
-//
-//
-//		System.out.println("\n*****************************TESTING REMOVES*****************************");
-//		clearAndRefillTheList(list, new Integer[] {1, 8, 3, 4, 5, 9, 7, 3, 4, 2});
-//
-//		// parameter 1: the list
-//		// parameter 2: indicates if we are removing from the front or back
-//		// parameter 3: if it exists, this is the expected value returned from the remove
-//		// parameter 4: a description of the test
-//		testRemove(list, AddRemovePosition.FRONT, 1, "remove from non-empty");
-//		testDisplayMatch(list, "[8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=9\tcapacity=10\thead=8 tail=2");
-//
-//		testRemove(list, AddRemovePosition.FRONT, 8, "remove from non-empty");
-//		testDisplayMatch(list, "[3, 4, 5, 9, 7, 3, 4, 2]\tsize=8\tcapacity=10\thead=3 tail=2");
-//
-//		testRemove(list, AddRemovePosition.BACK, 2, "remove from non-empty");
-//		testDisplayMatch(list, "[3, 4, 5, 9, 7, 3, 4]\tsize=7\tcapacity=10\thead=3 tail=4");
-//
-//		testRemove(list, AddRemovePosition.BACK, 4, "remove from non-empty");
-//		testSize(list, 6);
-//		testDisplayMatch(list, "[3, 4, 5, 9, 7, 3]\tsize=6\tcapacity=10\thead=3 tail=3");
-//
-//		list.clear();
-//		// parameter 1: the list
-//		// parameter 2: indicates if we are removing from the front or back
-//		// parameter 3: a description of the test
-//		testRemove(list, AddRemovePosition.FRONT, "remove from empty");
-//		testIsEmptyFull(list, true, false);
-//		testSize(list, 0);
-//		testDisplayMatch(list, "[]\tsize=0\tcapacity=10");
-//
-//		testRemove(list, AddRemovePosition.BACK, "remove from empty");
-//		testIsEmptyFull(list, true, false);
-//		testSize(list, 0);
-//		testDisplayMatch(list, "[]\tsize=0\tcapacity=10");
-//
-//		list.clear();		list.addFront(1);
-//		testRemove(list, AddRemovePosition.FRONT, 1, "remove from singleton");
-//		testIsEmptyFull(list, true, false);
-//
-//		list.clear();		list.addFront(1);
-//		testRemove(list, AddRemovePosition.BACK, 1, "remove from singleton");
-//		testIsEmptyFull(list, true, false);
-//
-//		list.clear();		list.addBack(1);
-//		testRemove(list, AddRemovePosition.FRONT, 1, "remove from singleton");
-//		testIsEmptyFull(list, true, false);
-//
-//		list.clear();		list.addBack(1);
-//		testRemove(list, AddRemovePosition.BACK, 1, "remove from singleton");
-//		testIsEmptyFull(list, true, false);
-//
-//
-//		System.out.println("\n*****************************TESTING MIX OF ADDS AND REMOVES*****************************");
-//		list.clear();
-//		list.addFront(3); 		list.addBack(2);		list.addFront(4);
-//		list.addFront(5);		list.addBack(3);		list.addBack(8);
-//		list.addBack(9);
-//		testDisplayMatch(list, "[5, 4, 3, 2, 3, 8, 9]\tsize=7\tcapacity=10\thead=5 tail=9");
-//
-//		list.removeFront(); list.removeBack();
-//		testDisplayMatch(list, "[4, 3, 2, 3, 8]\tsize=4\tcapacity=10\thead=4 tail=8");
-//
-//		list.clear();
-//		list.addFront(4); 		list.addBack(3);		list.addBack(5); 	list.addBack(4);
-//		testDisplayMatch(list, "[4, 3, 5, 4]\tsize=4\tcapacity=10\thead=4 tail=4");
-//
-//
+
+
+		System.out.println("\n*****************************TESTING REMOVES*****************************");
+		clearAndRefillTheList(list, new Integer[] {1, 8, 3, 4, 5, 9, 7, 3, 4, 2});
+
+		// parameter 1: the list
+		// parameter 2: indicates if we are removing from the front or back
+		// parameter 3: if it exists, this is the expected value returned from the remove
+		// parameter 4: a description of the test
+		testRemove(list, AddRemovePosition.FRONT, 1, "remove from non-empty");
+		testDisplayMatch(list, "[8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=9\tcapacity=10\thead=8 tail=2");
+
+		testRemove(list, AddRemovePosition.FRONT, 8, "remove from non-empty");
+		testDisplayMatch(list, "[3, 4, 5, 9, 7, 3, 4, 2]\tsize=8\tcapacity=10\thead=3 tail=2");
+
+		testRemove(list, AddRemovePosition.BACK, 2, "remove from non-empty");
+		testDisplayMatch(list, "[3, 4, 5, 9, 7, 3, 4]\tsize=7\tcapacity=10\thead=3 tail=4");
+
+		testRemove(list, AddRemovePosition.BACK, 4, "remove from non-empty");
+		testSize(list, 6);
+		testDisplayMatch(list, "[3, 4, 5, 9, 7, 3]\tsize=6\tcapacity=10\thead=3 tail=3");
+
+		list.clear();
+		// parameter 1: the list
+		// parameter 2: indicates if we are removing from the front or back
+		// parameter 3: a description of the test
+		testRemove(list, AddRemovePosition.FRONT, "remove from empty");
+		testIsEmptyFull(list, true, false);
+		testSize(list, 0);
+		testDisplayMatch(list, "[]\tsize=0\tcapacity=10");
+
+		testRemove(list, AddRemovePosition.BACK, "remove from empty");
+		testIsEmptyFull(list, true, false);
+		testSize(list, 0);
+		testDisplayMatch(list, "[]\tsize=0\tcapacity=10");
+
+		list.clear();		list.addFront(1);
+		testRemove(list, AddRemovePosition.FRONT, 1, "remove from singleton");
+		testIsEmptyFull(list, true, false);
+
+		list.clear();		list.addFront(1);
+		testRemove(list, AddRemovePosition.BACK, 1, "remove from singleton");
+		testIsEmptyFull(list, true, false);
+
+		list.clear();		list.addBack(1);
+		testRemove(list, AddRemovePosition.FRONT, 1, "remove from singleton");
+		testIsEmptyFull(list, true, false);
+
+		list.clear();		list.addBack(1);
+		testRemove(list, AddRemovePosition.BACK, 1, "remove from singleton");
+		testIsEmptyFull(list, true, false);
+
+
+		System.out.println("\n*****************************TESTING MIX OF ADDS AND REMOVES*****************************");
+		list.clear();
+		list.addFront(3); 		list.addBack(2);		list.addFront(4);
+		list.addFront(5);		list.addBack(3);		list.addBack(8);
+		list.addBack(9);
+		testDisplayMatch(list, "[5, 4, 3, 2, 3, 8, 9]\tsize=7\tcapacity=10\thead=5 tail=9");
+
+		list.removeFront(); list.removeBack();
+		testDisplayMatch(list, "[4, 3, 2, 3, 8]\tsize=4\tcapacity=10\thead=4 tail=8");
+
+		list.clear();
+		list.addFront(4); 		list.addBack(3);		list.addBack(5); 	list.addBack(4);
+		testDisplayMatch(list, "[4, 3, 5, 4]\tsize=4\tcapacity=10\thead=4 tail=4");
+
+
 //		System.out.println("\n*****************************TESTING GET ENTRY*****************************");
 //		clearAndRefillTheList(list, new Integer[] {4, 3, 2, 3, 8});
 //
@@ -356,41 +356,41 @@ public class ProjectCDriver {
 //		}
 //	}
 
-//	public static <T> void testRemove(FrontBackCappedListInterface<T> list, AddRemovePosition positionToRemove, String testDescription) {
-//		testRemove(list, positionToRemove, null, testDescription);
-//	}
+	public static <T> void testRemove(FrontBackCappedListInterface<T> list, AddRemovePosition positionToRemove, String testDescription) {
+		testRemove(list, positionToRemove, null, testDescription);
+	}
 
-//	public static <T> void testRemove(FrontBackCappedListInterface<T> list, AddRemovePosition positionToRemove, T expectedResult, String testDescription) {
-//		System.out.println("\nTrying to remove from the " + positionToRemove + " of list");
-//		System.out.println("List before removing: " + list);
-//
-//		int beforeSize = list.size();
-//
-//		T actualResult;
-//		if(positionToRemove==AddRemovePosition.FRONT) {
-//			actualResult = list.removeFront();
-//		} else { // positionToRemove==Position.BACK
-//			actualResult = list.removeBack();
-//		}
-//
-//		System.out.println("List after  removing: " + list);
-//		int expectedAfterSize = 0, actualAfterSize = 0;
-//		if(expectedResult!=null) {
-//			actualAfterSize = list.size();
-//			expectedAfterSize = beforeSize-1;
-//			if(expectedAfterSize != actualAfterSize) {
-//				System.out.println("*****Test failed when removing from " + positionToRemove + "; test:" + testDescription);
-//				System.out.println("     Expected after size=" + expectedAfterSize + "\tActual after size=" + actualAfterSize);
-//			}
-//		}
-//		if(expectedResult==null && actualResult!=null) {
-//			System.out.println("*****Test failed when removing from " + positionToRemove + "; test:" + testDescription);
-//			System.out.println("     Expected result=" + expectedResult + "\tActual result=" + actualResult);
-//		} else if(expectedResult!=null && !expectedResult.equals(actualResult)) {
-//			System.out.println("*****Test failed when removing from " + positionToRemove + "; test:" + testDescription);
-//			System.out.println("     Expected after size=" + expectedAfterSize + "\tActual after size=" + actualAfterSize);
-//		}
-//	}
+	public static <T> void testRemove(FrontBackCappedListInterface<T> list, AddRemovePosition positionToRemove, T expectedResult, String testDescription) {
+		System.out.println("\nTrying to remove from the " + positionToRemove + " of list");
+		System.out.println("List before removing: " + list);
+
+		int beforeSize = list.size();
+
+		T actualResult;
+		if(positionToRemove==AddRemovePosition.FRONT) {
+			actualResult = list.removeFront();
+		} else { // positionToRemove==Position.BACK
+			actualResult = list.removeBack();
+		}
+
+		System.out.println("List after  removing: " + list);
+		int expectedAfterSize = 0, actualAfterSize = 0;
+		if(expectedResult!=null) {
+			actualAfterSize = list.size();
+			expectedAfterSize = beforeSize-1;
+			if(expectedAfterSize != actualAfterSize) {
+				System.out.println("*****Test failed when removing from " + positionToRemove + "; test:" + testDescription);
+				System.out.println("     Expected after size=" + expectedAfterSize + "\tActual after size=" + actualAfterSize);
+			}
+		}
+		if(expectedResult==null && actualResult!=null) {
+			System.out.println("*****Test failed when removing from " + positionToRemove + "; test:" + testDescription);
+			System.out.println("     Expected result=" + expectedResult + "\tActual result=" + actualResult);
+		} else if(expectedResult!=null && !expectedResult.equals(actualResult)) {
+			System.out.println("*****Test failed when removing from " + positionToRemove + "; test:" + testDescription);
+			System.out.println("     Expected after size=" + expectedAfterSize + "\tActual after size=" + actualAfterSize);
+		}
+	}
 
 //	public static <T extends Comparable<? super T>> void testCompareTo(T[] contentsListA, int sizeA, T[] contentsListB, int sizeB, PosNegZero expectedResult, String testDescription) {
 //		LinkedFrontBackCappedList<T> listA = new LinkedFrontBackCappedList<>(sizeA);

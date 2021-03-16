@@ -93,14 +93,53 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		return result;
 	}
 
+
+	/**
+	 * Removes an entry from the beginning of the list if the list is not empty. The remaining entries
+	 * are shifted forwards, and the list size is decreased by 1.
+	 *
+	 * @return A reference to the removed entry or null if the list is empty
+	 */
 	@Override
 	public T removeFront() {
-		return null;
+		checkInitialization();
+		T result = null;
+
+		if (!(isEmpty())) {
+			result = head.getData();
+			head = head.getNextNode();
+			numberOfEntries--;
+		}
+
+		return result;
 	}
 
+
+	/**
+	 * Removes an entry from the end of the list if the list is not empty. The rest of the list is not
+	 * impacted, and the list is decreased by 1.
+	 *
+	 * @return A reference to the removed entry or null if the list is empty
+	 */
 	@Override
 	public T removeBack() {
-		return null;
+		checkInitialization();
+		T result = null;
+
+		if (!(isEmpty())) {
+			result = tail.getData();
+
+			if (numberOfEntries == 1) {
+				initializeDataFields();
+			} else {
+				tail = getNodeAt(numberOfEntries - 1);
+				tail.setNextNode(null);
+				numberOfEntries--;
+
+			}
+		}
+
+		return result;
 	}
 
 
@@ -233,10 +272,10 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		int index = 0;
 
 		// Iterative version
-//		Node currentNode = head;
-//		while ((index < numberOfEntries) && (currentNode != null)) {
-//			result[index] = currentNode.getData();
-//			currentNode = currentNode.getNextNode();
+//		Node current = head;
+//		while ((index < numberOfEntries) && (current != null)) {
+//			result[index] = current.getData();
+//			current = current.getNextNode();
 //			index++;
 //		}
 
@@ -251,6 +290,36 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		if (current != null) {				// Recursive case
 			array[index] = current.getData();
 			toArray(array, index + 1, current.getNextNode());
+		}
+	}
+
+
+	// Returns a reference to the node at a given position.
+	// Precondition: The list is not empty; 1 <= givenPosition <= numberOfEntries.
+	private Node getNodeAt(int givenPosition) {
+		// Assertion: (head != null) && (1 <= givenPosition) && (givenPosition <= numberOfEntries)
+
+		// Traverse the list to locate the desired node (skipped if givenPosition is 1)
+		// Iterative version
+		Node current = head;
+
+		for (int counter = 1; counter < givenPosition; counter++) {
+			current = current.getNextNode();
+		}
+
+		return current;
+
+
+		// Recursive version
+//		return getNodeAt(1, givenPosition, head);
+	}
+
+	// Helper method
+	private Node getNodeAt(int counter, int givenPosition, Node current) {
+		if (counter == givenPosition) {
+			return current;
+		} else {
+			return getNodeAt(counter + 1, givenPosition, current.getNextNode());
 		}
 	}
 
