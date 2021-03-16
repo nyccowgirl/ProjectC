@@ -95,33 +95,33 @@ public class ProjectCDriver {
 		testDisplayMatch(list, "[1, 8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=10\tcapacity=10\thead=1 tail=2");
 
 
-//		System.out.println("\n*****************************TESTING INDEX OF*****************************");
-//		clearAndRefillTheList(list, new Integer[] {1, 8, 3, 4, 5, 9, 7, 3, 4, 2});
-//
-//		// parameter 1: the list
-//		// parameter 2: indicates if we are finding the index of the first or last match
-//		// parameter 3: the value to search for
-//		// parameter 4: expected result (the index where the element appears)
-//		// parameter 5: a description of the test
-//		testIndexOf(list, IndexPosition.FIRST, 1, 0, "first element in the list");
-//		testIndexOf(list, IndexPosition.FIRST, 2, 9, "last element in the list");
-//		testIndexOf(list, IndexPosition.FIRST, 5, 4, "element in the middle of the list");
-//		testIndexOf(list, IndexPosition.FIRST, 3, 2, "repeated element in the list");
-//		testIndexOf(list, IndexPosition.FIRST, 0, "element not in the list");
-//
-//		testDisplayMatch(list, "[1, 8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=10\tcapacity=10\thead=1 tail=2");
-//
-//
-//		System.out.println("\n*****************************TESTING LAST INDEX OF*****************************");
-//		clearAndRefillTheList(list, new Integer[] {1, 8, 3, 4, 5, 9, 7, 3, 4, 2});
-//
-//		testIndexOf(list, IndexPosition.LAST, 1, 0, "first element in the list");
-//		testIndexOf(list, IndexPosition.LAST, 2, 9, "last element in the list");
-//		testIndexOf(list, IndexPosition.LAST, 5, 4, "element in the middle of the list");
-//		testIndexOf(list, IndexPosition.LAST, 3, 7, "repeated element in the list");
-//		testIndexOf(list, IndexPosition.LAST, 0, "element not in the list");
-//
-//		testDisplayMatch(list, "[1, 8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=10\tcapacity=10\thead=1 tail=2");
+		System.out.println("\n*****************************TESTING INDEX OF*****************************");
+		clearAndRefillTheList(list, new Integer[] {1, 8, 3, 4, 5, 9, 7, 3, 4, 2});
+
+		// parameter 1: the list
+		// parameter 2: indicates if we are finding the index of the first or last match
+		// parameter 3: the value to search for
+		// parameter 4: expected result (the index where the element appears)
+		// parameter 5: a description of the test
+		testIndexOf(list, IndexPosition.FIRST, 1, 0, "first element in the list");
+		testIndexOf(list, IndexPosition.FIRST, 2, 9, "last element in the list");
+		testIndexOf(list, IndexPosition.FIRST, 5, 4, "element in the middle of the list");
+		testIndexOf(list, IndexPosition.FIRST, 3, 2, "repeated element in the list");
+		testIndexOf(list, IndexPosition.FIRST, 0, "element not in the list");
+
+		testDisplayMatch(list, "[1, 8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=10\tcapacity=10\thead=1 tail=2");
+
+
+		System.out.println("\n*****************************TESTING LAST INDEX OF*****************************");
+		clearAndRefillTheList(list, new Integer[] {1, 8, 3, 4, 5, 9, 7, 3, 4, 2});
+
+		testIndexOf(list, IndexPosition.LAST, 1, 0, "first element in the list");
+		testIndexOf(list, IndexPosition.LAST, 2, 9, "last element in the list");
+		testIndexOf(list, IndexPosition.LAST, 5, 4, "element in the middle of the list");
+		testIndexOf(list, IndexPosition.LAST, 3, 7, "repeated element in the list");
+		testIndexOf(list, IndexPosition.LAST, 0, "element not in the list");
+
+		testDisplayMatch(list, "[1, 8, 3, 4, 5, 9, 7, 3, 4, 2]\tsize=10\tcapacity=10\thead=1 tail=2");
 
 
 		System.out.println("\n*****************************TESTING REMOVES*****************************");
@@ -183,42 +183,42 @@ public class ProjectCDriver {
 		testDisplayMatch(list, "[5, 4, 3, 2, 3, 8, 9]\tsize=7\tcapacity=10\thead=5 tail=9");
 
 		list.removeFront(); list.removeBack();
-		testDisplayMatch(list, "[4, 3, 2, 3, 8]\tsize=4\tcapacity=10\thead=4 tail=8");
+		testDisplayMatch(list, "[4, 3, 2, 3, 8]\tsize=5\tcapacity=10\thead=4 tail=8");
 
 		list.clear();
 		list.addFront(4); 		list.addBack(3);		list.addBack(5); 	list.addBack(4);
 		testDisplayMatch(list, "[4, 3, 5, 4]\tsize=4\tcapacity=10\thead=4 tail=4");
 
 
-//		System.out.println("\n*****************************TESTING GET ENTRY*****************************");
-//		clearAndRefillTheList(list, new Integer[] {4, 3, 2, 3, 8});
-//
-//		// parameter 1: the list
-//		// parameter 2: the index at which you will get the element
-//		// parameter 3: the expected result (the element at the specified index)
-//		// parameter 4: a description of the test
-//		testGetEntry(list, 0, 4, "getting first position");
-//		testGetEntry(list, 4, 8, "getting last position");
-//		testGetEntry(list, 2, 2, "getting a middle position");
-//
-//		// parameter 1: the list
-//		// parameter 2: the index at which you will get the element; these method calls test invalid indices
-//		// parameter 3: a description of the test
-//		testGetEntry(list, -1, "invalid index");
-//		testGetEntry(list, 11, "invalid index");
-//		testGetEntry(list, 5,  "invalid index");
-//		testGetEntry(list, 7,  "empty (invalid) index");
-//
-//
-//		System.out.println("\n*****************************TESTING WITH STRINGS*****************************");
-//		FrontBackCappedListInterface<String> wordList = new LinkedFrontBackCappedList<String>(20);
-//		testAdd(wordList, AddRemovePosition.FRONT, new String[] {"job!", "Nice", "it!", "did", "You"}, true, "test with Strings");
-//		testAdd(wordList, AddRemovePosition.BACK, new String[] {"You", "rock!"}, true, "test with Strings");
-//		testDisplayMatch(wordList, "[You, did, it!, Nice, job!, You, rock!]\tsize=7\tcapacity=20\thead=You tail=rock!");
-//		testContains(wordList, new String("it!"), true, "test with Strings");
-//		testIndexOf(wordList, IndexPosition.FIRST, new String("You"), 0, "test with Strings");
-//		testIndexOf(wordList, IndexPosition.LAST, new String("You"), 5, "test with Strings");
-//
+		System.out.println("\n*****************************TESTING GET ENTRY*****************************");
+		clearAndRefillTheList(list, new Integer[] {4, 3, 2, 3, 8});
+
+		// parameter 1: the list
+		// parameter 2: the index at which you will get the element
+		// parameter 3: the expected result (the element at the specified index)
+		// parameter 4: a description of the test
+		testGetEntry(list, 0, 4, "getting first position");
+		testGetEntry(list, 4, 8, "getting last position");
+		testGetEntry(list, 2, 2, "getting a middle position");
+
+		// parameter 1: the list
+		// parameter 2: the index at which you will get the element; these method calls test invalid indices
+		// parameter 3: a description of the test
+		testGetEntry(list, -1, "invalid index");
+		testGetEntry(list, 11, "invalid index");
+		testGetEntry(list, 5,  "invalid index");
+		testGetEntry(list, 7,  "empty (invalid) index");
+
+
+		System.out.println("\n*****************************TESTING WITH STRINGS*****************************");
+		FrontBackCappedListInterface<String> wordList = new LinkedFrontBackCappedList<String>(20);
+		testAdd(wordList, AddRemovePosition.FRONT, new String[] {"job!", "Nice", "it!", "did", "You"}, true, "test with Strings");
+		testAdd(wordList, AddRemovePosition.BACK, new String[] {"You", "rock!"}, true, "test with Strings");
+		testDisplayMatch(wordList, "[You, did, it!, Nice, job!, You, rock!]\tsize=7\tcapacity=20\thead=You tail=rock!");
+		testContains(wordList, new String("it!"), true, "test with Strings");
+		testIndexOf(wordList, IndexPosition.FIRST, new String("You"), 0, "test with Strings");
+		testIndexOf(wordList, IndexPosition.LAST, new String("You"), 5, "test with Strings");
+
 //		/**/
 //		// UNCOMMENT IF COMPLETING THE EXTRA CREDIT
 //		System.out.println("\n*****************************TESTING EXTRA CREDIT*****************************");
@@ -315,46 +315,46 @@ public class ProjectCDriver {
 		}
 	}
 
-//	public static <T> void testIndexOf(FrontBackCappedListInterface<T> list, IndexPosition indexPosition, T element, String testDescription) {
-//		testIndexOf(list, indexPosition, element, -1, testDescription);
-//	}
+	public static <T> void testIndexOf(FrontBackCappedListInterface<T> list, IndexPosition indexPosition, T element, String testDescription) {
+		testIndexOf(list, indexPosition, element, -1, testDescription);
+	}
 
-//	public static <T> void testIndexOf(FrontBackCappedListInterface<T> list, IndexPosition indexPosition, T element, int expectedResult, String testDescription) {
-//		int actualResult;
-//		if(indexPosition==IndexPosition.FIRST) {
-//			actualResult = list.indexOf(element);
-//		} else { // position==IndexPosition.LAST
-//			actualResult = list.lastIndexOf(element);
-//		}
-//		System.out.println("\nTarget = " + element + " in List: " + list);
-//		System.out.println("Expected " + indexPosition + " index result = " + expectedResult);
-//		System.out.println("Actual   " + indexPosition + " index result = " + actualResult);
-//
-//		if(expectedResult<0 && actualResult>=0) {
-//			System.out.println("*****Test failed when finding the index of an element not in the list; test:" + testDescription);
-//			System.out.println("     Result should indicate the element is not on the list.");
-//		} else if(expectedResult!=actualResult) {
-//			System.out.println("*****Test failed when finding the index; test:" + testDescription);
-//		}
-//	}
+	public static <T> void testIndexOf(FrontBackCappedListInterface<T> list, IndexPosition indexPosition, T element, int expectedResult, String testDescription) {
+		int actualResult;
+		if(indexPosition==IndexPosition.FIRST) {
+			actualResult = list.indexOf(element);
+		} else { // position==IndexPosition.LAST
+			actualResult = list.lastIndexOf(element);
+		}
+		System.out.println("\nTarget = " + element + " in List: " + list);
+		System.out.println("Expected " + indexPosition + " index result = " + expectedResult);
+		System.out.println("Actual   " + indexPosition + " index result = " + actualResult);
 
-//	public static <T> void testGetEntry(FrontBackCappedListInterface<T> list, int position, String testDescription) {
-//		testGetEntry(list, position, null, testDescription);
-//	}
+		if(expectedResult<0 && actualResult>=0) {
+			System.out.println("*****Test failed when finding the index of an element not in the list; test:" + testDescription);
+			System.out.println("     Result should indicate the element is not on the list.");
+		} else if(expectedResult!=actualResult) {
+			System.out.println("*****Test failed when finding the index; test:" + testDescription);
+		}
+	}
 
-//	public static <T> void testGetEntry(FrontBackCappedListInterface<T> list, int position, T expectedResult, String testDescription) {
-//		T actualResult = list.getEntry(position);
-//
-//		System.out.println("\nTarget index = " + position + " in List: " + list);
-//		System.out.println("Expected element at index " + position + " = " + expectedResult);
-//		System.out.println("Actual   element at index " + position + " = " + actualResult);
-//
-//		if(expectedResult==null && actualResult!=null) {
-//			System.out.println("*****Test failed when using an invalid position; test:" + testDescription);
-//		} else if(expectedResult!=null && !expectedResult.equals(actualResult)) {
-//			System.out.println("*****Test failed to get the expected element for test:" + testDescription);
-//		}
-//	}
+	public static <T> void testGetEntry(FrontBackCappedListInterface<T> list, int position, String testDescription) {
+		testGetEntry(list, position, null, testDescription);
+	}
+
+	public static <T> void testGetEntry(FrontBackCappedListInterface<T> list, int position, T expectedResult, String testDescription) {
+		T actualResult = list.getEntry(position);
+
+		System.out.println("\nTarget index = " + position + " in List: " + list);
+		System.out.println("Expected element at index " + position + " = " + expectedResult);
+		System.out.println("Actual   element at index " + position + " = " + actualResult);
+
+		if(expectedResult==null && actualResult!=null) {
+			System.out.println("*****Test failed when using an invalid position; test:" + testDescription);
+		} else if(expectedResult!=null && !expectedResult.equals(actualResult)) {
+			System.out.println("*****Test failed to get the expected element for test:" + testDescription);
+		}
+	}
 
 	public static <T> void testRemove(FrontBackCappedListInterface<T> list, AddRemovePosition positionToRemove, String testDescription) {
 		testRemove(list, positionToRemove, null, testDescription);

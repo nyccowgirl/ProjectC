@@ -132,7 +132,7 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 			if (numberOfEntries == 1) {
 				initializeDataFields();
 			} else {
-				tail = getNodeAt(numberOfEntries - 1);
+				tail = getNodeAt(numberOfEntries - 2);
 				tail.setNextNode(null);
 				numberOfEntries--;
 
@@ -151,21 +151,69 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		initializeDataFields();
 	}
 
+
+	/**
+	 * Retrieves the entry at a certain position in the list, after determining if the position is valid.
+	 *
+	 * @param givenPosition An integer that indicates the position of the desired entry
+	 * @return A reference to the indicated entry or null if the index is out of bounds
+	 */
 	@Override
 	public T getEntry(int givenPosition) {
-		return null;
+		checkInitialization();
+		T result = null;
+
+		if (validPosition(givenPosition)) { // Assertion: list is not empty
+			result = getNodeAt(givenPosition).getData();
+		}
+		return result;
 	}
 
+
+	/**
+	 * Determines the position in the list of a given entry. If the entry appears more than once, the first index
+	 * is returned.
+	 *
+	 * @param anEntry The object to search for in the list
+	 * @return The first position that the entry was found or -1 if the entry is not found
+	 */
 	@Override
 	public int indexOf(T anEntry) {
-		return 0;
+		checkInitialization();
+		int position = -1;
+		// ADD CODE FOR ITERATIVE VERSION
+
+		// Recursive version
+		position = indexOf(anEntry, position, 0, head);
+		return position;
 	}
 
+
+	/**
+	 * Determines the position in the list of a given entry. If the entry appears more than once, the last index
+	 * is returned.
+	 *
+	 * @param anEntry The object to search for in the list
+	 * @return The last position that the entry was found or -1 if the entry is not found
+	 */
 	@Override
 	public int lastIndexOf(T anEntry) {
-		return 0;
+		checkInitialization();
+		int position = -1;
+		// ADD CODE FOR ITERATIVE VERSION
+
+		// Recursive version
+		position = lastIndexOf(anEntry, position, numberOfEntries - 1, tail);
+		return position;
 	}
 
+
+	/**
+	 * Determines whether an entry is in the list.
+	 *
+	 * @param anEntry The object to search for in the list
+	 * @return True if the entry is in the list; otherwise, false if list is empty or entry is not found
+	 */
 	@Override
 	public boolean contains(T anEntry) {
 		checkInitialization();
@@ -173,7 +221,10 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		// ADD CODE FOR ITERATIVE VERSION
 
 		// Recursive version
-		result = contains(anEntry, head);
+//		result = contains(anEntry, head);
+
+		// Utilize indexOf(anEntry)
+		result = (indexOf(anEntry) >= 0) ? true : false;
 
 		return result;
 	}
@@ -258,6 +309,17 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 
 
 	/**
+	 * Determines if given position is a valid position within the bounds of the list.
+	 *
+	 * @param position The position in the list
+	 * @return True if the position is valid; otherwise, returns false.
+	 */
+	private boolean validPosition(int position) {
+		return position >= 0 && position < numberOfEntries;
+	}
+
+
+	/**
 	 * Casts the list to an array containing the entries in the list.
 	 *
 	 * @return An array containing all the entries in the list
@@ -285,7 +347,7 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		return result;
 	}
 
-	// Helper method to recursive version of toArray() method
+	// Helper method for recursive version of toArray() method
 	private void toArray(T[] array, int index, Node current) {
 		if (current != null) {				// Recursive case
 			array[index] = current.getData();
@@ -294,27 +356,32 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 	}
 
 
-	// Returns a reference to the node at a given position.
-	// Precondition: The list is not empty; 1 <= givenPosition <= numberOfEntries.
+	/**
+	 * Retrieves a reference to the node at a given position.
+	 *
+	 * Precondition: The list is not empty; 0 <= givenPosition <= numberOfEntries - 1.
+	 *
+	 * @param givenPosition The position in the list
+	 * @return A reference to the node at the given position
+	 */
 	private Node getNodeAt(int givenPosition) {
-		// Assertion: (head != null) && (1 <= givenPosition) && (givenPosition <= numberOfEntries)
+		// Assertion: (head != null) && (0 <= givenPosition) && (givenPosition <= numberOfEntries - 1)
 
-		// Traverse the list to locate the desired node (skipped if givenPosition is 1)
+		// Traverse the list to locate the desired node (skipped if givenPosition is 0)
 		// Iterative version
-		Node current = head;
-
-		for (int counter = 1; counter < givenPosition; counter++) {
-			current = current.getNextNode();
-		}
-
-		return current;
-
+//		Node current = head;
+//
+//		for (int counter = 0; counter < givenPosition; counter++) {
+//			current = current.getNextNode();
+//		}
+//
+//		return current;
 
 		// Recursive version
-//		return getNodeAt(1, givenPosition, head);
+		return getNodeAt(0, givenPosition, head);
 	}
 
-	// Helper method
+	// Helper method for recursive version of getNodeAt(int givenPosition)
 	private Node getNodeAt(int counter, int givenPosition, Node current) {
 		if (counter == givenPosition) {
 			return current;
@@ -324,7 +391,44 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 	}
 
 
-	// Helper method to recursive version of contains(T anEntry) method
+	// Helper method for recursive version of indexOf(T anEntry) method
+	private int indexOf(T anEntry, int position, int index, Node current) {
+		if (current == null) {
+			return position;
+		} else {
+			// Option 1
+			return (current.getData().equals(anEntry) ? index :
+					indexOf(anEntry, position, index + 1, current.getNextNode()));
+
+			// Option 2
+//			if (current.getData().equals(anEntry)) {
+//				return index;
+//			} else {
+//				return indexOf(anEntry, position, index + 1, current.getNextNode());
+//			}
+		}
+	}
+
+
+	// Helper method for recursive version of lastIndexOf(T anEntry) method
+	private int lastIndexOf(T anEntry, int position, int index, Node current) {
+		// TBD: To be refined...may have duplicate code
+		if (current == null) {
+			return position;
+		} else {
+			if (current.getData().equals(anEntry)) {
+				return index;
+			} else {
+				if (index == 0) {
+					return position;
+				} else {
+					return lastIndexOf(anEntry, position, index - 1, getNodeAt(index - 1));
+				}
+			}
+		}
+	}
+
+	// Helper method for recursive version of contains(T anEntry) method
 	private boolean contains(T anEntry, Node current) {
 		if (current == null) {				// Base case
 			return false;
