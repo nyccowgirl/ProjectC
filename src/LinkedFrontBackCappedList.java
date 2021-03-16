@@ -5,7 +5,7 @@
  * @author Trang Hoang (sect. 933)
  * @author Jared Roussel (sect. 933)
  * @author Brent Gannetta (sect. 932)
- * @version 1.1
+ * @version 1.4
  */
 
 import java.util.*;
@@ -13,7 +13,8 @@ import java.util.*;
 public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterface<T> {
 
 	private Node head, tail;
-	private int numberOfEntries, capacity;
+	private int numberOfEntries;
+	private final int capacity;
 	private boolean initialized = false;
 
 
@@ -183,9 +184,10 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		int position = -1;
 		// ADD CODE FOR ITERATIVE VERSION
 
+//		return position;
+
 		// Recursive version
-		position = indexOf(anEntry, position, 0, head);
-		return position;
+		return indexOf(anEntry, position, 0, head);
 	}
 
 
@@ -217,16 +219,16 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 	@Override
 	public boolean contains(T anEntry) {
 		checkInitialization();
-		boolean result = false;
+//		boolean result = false;
 		// ADD CODE FOR ITERATIVE VERSION
+//		return result;
 
 		// Recursive version
-//		result = contains(anEntry, head);
+//		return contains(anEntry, head);
+
 
 		// Utilize indexOf(anEntry)
-		result = (indexOf(anEntry) >= 0) ? true : false;
-
-		return result;
+		return (indexOf(anEntry) >= 0);
 	}
 
 
