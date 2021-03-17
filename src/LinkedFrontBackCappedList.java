@@ -5,12 +5,13 @@
  * @author Trang Hoang (sect. 933)
  * @author Jared Roussel (sect. 933)
  * @author Brent Gannetta (sect. 932)
- * @version 1.4
+ * @version 1.5
  */
 
 import java.util.*;
 
-public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterface<T> {
+public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implements FrontBackCappedListInterface<T>,
+		Comparable<LinkedFrontBackCappedList<T>> {
 
 	private Node head, tail;
 	private int numberOfEntries;
@@ -164,7 +165,7 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 		checkInitialization();
 		T result = null;
 
-		if (validPosition(givenPosition)) { // Assertion: list is not empty
+		if (validPosition(givenPosition)) { 	// Assertion: list is not empty
 			result = getNodeAt(givenPosition).getData();
 		}
 		return result;
@@ -282,6 +283,35 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 	}
 
 
+	/**
+	 * Compare two lists by nodes, entries and then size.
+	 *
+	 * @param other The list to compare to
+	 * @return 0 if the linked lists are equal; otherwise, negative if current object is less than the other or
+	 * positive if it is larger than the other
+	 */
+	@Override
+	public int compareTo(LinkedFrontBackCappedList<T> other) {
+		checkInitialization();
+		Node current = head;
+		Node otherCurrent = other.head;
+
+		if (this.isEmpty() && other.isEmpty()) {
+			return 0;
+		} else {
+			while ((current != null) && (otherCurrent != null)) {
+				if (current.getData().compareTo(otherCurrent.getData()) != 0) {
+					return current.getData().compareTo(otherCurrent.getData());
+				}
+				current = current.getNextNode();
+				otherCurrent = otherCurrent.getNextNode();
+			}
+
+			return Integer.valueOf(this.numberOfEntries).compareTo(Integer.valueOf(other.numberOfEntries));
+		}
+	}
+
+
 	/*
 	****************
 	HELPER METHODS:
@@ -331,7 +361,7 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedListInterfac
 
 		// The cast is safe because the new list contains null entries
 		@SuppressWarnings("unchecked")
-		T[] result = (T[]) new Object[numberOfEntries]; // TO DO: change to Comparable[] for extra credit
+		T[] result = (T[]) new Comparable[numberOfEntries]; // TO DO: change to Object[] for non-extra credit
 
 		int index = 0;
 

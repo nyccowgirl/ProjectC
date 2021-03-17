@@ -219,22 +219,22 @@ public class ProjectCDriver {
 		testIndexOf(wordList, IndexPosition.FIRST, new String("You"), 0, "test with Strings");
 		testIndexOf(wordList, IndexPosition.LAST, new String("You"), 5, "test with Strings");
 
-//		/**/
-//		// UNCOMMENT IF COMPLETING THE EXTRA CREDIT
-//		System.out.println("\n*****************************TESTING EXTRA CREDIT*****************************");
-//		testCompareTo(new Integer[] {}, 10, new Integer[] {}, 10, PosNegZero.ZERO, "both empty lists");
-//		testCompareTo(new Integer[] {}, 5, new Integer[] {}, 10, PosNegZero.ZERO, "both empty lists with different capacity");
-//		testCompareTo(new Integer[] {1}, 10, new Integer[] {}, 10, PosNegZero.POSITIVE, "no mismatched elements, listA [1] is longer than listB [] ");
-//		testCompareTo(new Integer[] {1}, 10, new Integer[] {1, 2}, 10, PosNegZero.NEGATIVE, "no mismatched elements, listA [1] is shorter than listB [1, 2]");
-//		testCompareTo(new Integer[] {1, 2}, 10, new Integer[] {1, 2}, 10, PosNegZero.ZERO, "no mismatched elements found [1, 2], equal length");
-//		testCompareTo(new Integer[] {3, 4}, 10, new Integer[] {3, 4}, 5, PosNegZero.ZERO, "no mismatched elements found [1, 2], equal length, different capacity");
-//		testCompareTo(new Integer[] {1, 2, 3}, 10, new Integer[] {1, 2, 4}, 10, PosNegZero.NEGATIVE, "for first mismatched element, the listA element [1, 2, 3] is smaller than the listB element [1, 2, 4]");
-//		testCompareTo(new Integer[] {1, 2, 6}, 10, new Integer[] {1, 2, 4}, 10, PosNegZero.POSITIVE, "for first mismatched element, the listA element [1, 2, 6] is larger than the listB element [1, 2, 4]");
-//		testCompareTo(new Integer[] {1, 2, 3, 4, 7}, 10, new Integer[] {7}, 10, PosNegZero.NEGATIVE, "for first mismatched element, the listA element [1, 2, 3, 4, 7] is smaller than the listB element [7]");
-//		testCompareTo(new Integer[] {3}, 10, new Integer[] {2, 1, 4, 3, 7}, 10, PosNegZero.POSITIVE, "for first mismatched element, the listA element [1, 2, 3, 4, 7] is smaller than the listB element [7]");
-//		testCompareTo(new Integer[] {1, 2, 3}, 10, new Integer[] {4, 2, 3}, 10, PosNegZero.NEGATIVE, "for first mismatched element, the listA element [1, 2, 3] is smaller than the listB element [4, 2, 3]");
-//		testCompareTo(new String[] {"a","b","c"}, 10, new String[] {"a","b", new String("c")}, 10, PosNegZero.ZERO, "no mismatched elements found [1, 2], equal length");
-//		testCompareTo(new String[] {"a","b","c"}, 10, new String[] {"a","b", new String("c")}, 20, PosNegZero.ZERO, "no mismatched elements found [1, 2], equal length, different capacity");
+		/**/
+		// UNCOMMENT IF COMPLETING THE EXTRA CREDIT
+		System.out.println("\n*****************************TESTING EXTRA CREDIT*****************************");
+		testCompareTo(new Integer[] {}, 10, new Integer[] {}, 10, PosNegZero.ZERO, "both empty lists");
+		testCompareTo(new Integer[] {}, 5, new Integer[] {}, 10, PosNegZero.ZERO, "both empty lists with different capacity");
+		testCompareTo(new Integer[] {1}, 10, new Integer[] {}, 10, PosNegZero.POSITIVE, "no mismatched elements, listA [1] is longer than listB [] ");
+		testCompareTo(new Integer[] {1}, 10, new Integer[] {1, 2}, 10, PosNegZero.NEGATIVE, "no mismatched elements, listA [1] is shorter than listB [1, 2]");
+		testCompareTo(new Integer[] {1, 2}, 10, new Integer[] {1, 2}, 10, PosNegZero.ZERO, "no mismatched elements found [1, 2], equal length");
+		testCompareTo(new Integer[] {3, 4}, 10, new Integer[] {3, 4}, 5, PosNegZero.ZERO, "no mismatched elements found [1, 2], equal length, different capacity");
+		testCompareTo(new Integer[] {1, 2, 3}, 10, new Integer[] {1, 2, 4}, 10, PosNegZero.NEGATIVE, "for first mismatched element, the listA element [1, 2, 3] is smaller than the listB element [1, 2, 4]");
+		testCompareTo(new Integer[] {1, 2, 6}, 10, new Integer[] {1, 2, 4}, 10, PosNegZero.POSITIVE, "for first mismatched element, the listA element [1, 2, 6] is larger than the listB element [1, 2, 4]");
+		testCompareTo(new Integer[] {1, 2, 3, 4, 7}, 10, new Integer[] {7}, 10, PosNegZero.NEGATIVE, "for first mismatched element, the listA element [1, 2, 3, 4, 7] is smaller than the listB element [7]");
+		testCompareTo(new Integer[] {3}, 10, new Integer[] {2, 1, 4, 3, 7}, 10, PosNegZero.POSITIVE, "for first mismatched element, the listA element [1, 2, 3, 4, 7] is smaller than the listB element [7]");
+		testCompareTo(new Integer[] {1, 2, 3}, 10, new Integer[] {4, 2, 3}, 10, PosNegZero.NEGATIVE, "for first mismatched element, the listA element [1, 2, 3] is smaller than the listB element [4, 2, 3]");
+		testCompareTo(new String[] {"a","b","c"}, 10, new String[] {"a","b", new String("c")}, 10, PosNegZero.ZERO, "no mismatched elements found [1, 2], equal length");
+		testCompareTo(new String[] {"a","b","c"}, 10, new String[] {"a","b", new String("c")}, 20, PosNegZero.ZERO, "no mismatched elements found [1, 2], equal length, different capacity");
 	}
 
 	/*
@@ -392,33 +392,33 @@ public class ProjectCDriver {
 		}
 	}
 
-//	public static <T extends Comparable<? super T>> void testCompareTo(T[] contentsListA, int sizeA, T[] contentsListB, int sizeB, PosNegZero expectedResult, String testDescription) {
-//		LinkedFrontBackCappedList<T> listA = new LinkedFrontBackCappedList<>(sizeA);
-//		for(T item : contentsListA) {
-//			listA.addBack(item);
-//		}
-//		LinkedFrontBackCappedList<T> listB = new LinkedFrontBackCappedList<>(sizeB);
-//		for(T item : contentsListB) {
-//			listB.addBack(item);
-//		}
-//
-//		int result = listA.compareTo(listB);
-//		PosNegZero resultRange;
-//		if(result<0) {
-//			resultRange = PosNegZero.NEGATIVE;
-//		} else if(result>0) {
-//			resultRange = PosNegZero.POSITIVE;
-//		} else {
-//			resultRange = PosNegZero.ZERO;
-//		}
-//		System.out.println("\nInvoking List A contents:  " + Arrays.toString(contentsListA) + "\nParameter List B contents: " + Arrays.toString(contentsListB));
-//		System.out.println("Expected result = " + expectedResult);
-//		System.out.println("Actual result   = " + resultRange);
-//
-//		if(resultRange!=expectedResult) {
-//			System.out.println("*****Test failed for: " + testDescription);
-//		}
-//	}
+	public static <T extends Comparable<? super T>> void testCompareTo(T[] contentsListA, int sizeA, T[] contentsListB, int sizeB, PosNegZero expectedResult, String testDescription) {
+		LinkedFrontBackCappedList<T> listA = new LinkedFrontBackCappedList<>(sizeA);
+		for(T item : contentsListA) {
+			listA.addBack(item);
+		}
+		LinkedFrontBackCappedList<T> listB = new LinkedFrontBackCappedList<>(sizeB);
+		for(T item : contentsListB) {
+			listB.addBack(item);
+		}
+
+		int result = listA.compareTo(listB);
+		PosNegZero resultRange;
+		if(result<0) {
+			resultRange = PosNegZero.NEGATIVE;
+		} else if(result>0) {
+			resultRange = PosNegZero.POSITIVE;
+		} else {
+			resultRange = PosNegZero.ZERO;
+		}
+		System.out.println("\nInvoking List A contents:  " + Arrays.toString(contentsListA) + "\nParameter List B contents: " + Arrays.toString(contentsListB));
+		System.out.println("Expected result = " + expectedResult);
+		System.out.println("Actual result   = " + resultRange);
+
+		if(resultRange!=expectedResult) {
+			System.out.println("*****Test failed for: " + testDescription);
+		}
+	}
 
 	public static enum AddRemovePosition {
 		FRONT, BACK;
