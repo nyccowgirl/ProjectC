@@ -307,7 +307,7 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 				otherCurrent = otherCurrent.getNextNode();
 			}
 
-			return Integer.valueOf(this.numberOfEntries).compareTo(Integer.valueOf(other.numberOfEntries));
+			return Integer.compare(this.numberOfEntries, other.numberOfEntries);
 		}
 	}
 
@@ -348,6 +348,7 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 	 */
 	private boolean validPosition(int position) {
 		return position >= 0 && position < numberOfEntries;
+
 	}
 
 
