@@ -393,13 +393,13 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 	/**
 	 * Retrieves a reference to the node at a given position.
 	 *
-	 * Precondition: The list is not empty; 0 <= givenPosition <= numberOfEntries - 1.
+	 * Precondition: The list is not empty; 0 <= givenPosition < numberOfEntries.
 	 *
 	 * @param givenPosition The position in the list
 	 * @return A reference to the node at the given position
 	 */
 	private Node getNodeAt(int givenPosition) {
-		// Assertion: (head != null) && (0 <= givenPosition) && (givenPosition <= numberOfEntries - 1)
+		// Assertion: (head != null) && (0 <= givenPosition) && (givenPosition < numberOfEntries)
 
 		// Traverse the list to locate the desired node (skipped if givenPosition is 0)
 		// Iterative version
