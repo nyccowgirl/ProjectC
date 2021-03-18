@@ -299,6 +299,7 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 		if (this.isEmpty() && other.isEmpty()) {
 			return 0;
 		} else {
+			// Is there a recursive version perhaps or will it not be that efficient?
 			while ((current != null) && (otherCurrent != null)) {
 				if (current.getData().compareTo(otherCurrent.getData()) != 0) {
 					return current.getData().compareTo(otherCurrent.getData());
