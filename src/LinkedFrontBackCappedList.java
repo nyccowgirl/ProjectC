@@ -137,7 +137,6 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 				tail = getNodeAt(numberOfEntries - 2);
 				tail.setNextNode(null);
 				numberOfEntries--;
-
 			}
 		}
 
@@ -168,6 +167,7 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 		if (validPosition(givenPosition)) { 	// Assertion: list is not empty
 			result = getNodeAt(givenPosition).getData();
 		}
+
 		return result;
 	}
 
@@ -183,12 +183,23 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 	public int indexOf(T anEntry) {
 		checkInitialization();
 		int position = -1;
-		// ADD CODE FOR ITERATIVE VERSION
 
-//		return position;
+		// Iterative version
+		Node current = head;
+		int index = 0;
+
+		while (current != null && position < 0) {
+			if (current.getData().equals(anEntry)) {
+				position = index;
+			}
+			current = current.getNextNode();
+			index++;
+		}
+
+		return position;
 
 		// Recursive version
-		return indexOf(anEntry, position, 0, head);
+//		return indexOf(anEntry, position, 0, head);
 	}
 
 
@@ -203,11 +214,24 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 	public int lastIndexOf(T anEntry) {
 		checkInitialization();
 		int position = -1;
-		// ADD CODE FOR ITERATIVE VERSION
+
+		// Iterative version
+		Node current = head;
+		int index = 0;
+
+		while (current != null) {
+			if (current.getData().equals(anEntry)) {
+				position = index;
+			}
+			current = current.getNextNode();
+			index++;
+		}
+
+		return position;
 
 		// Recursive version
-		position = lastIndexOf(anEntry, position, numberOfEntries - 1, tail);
-		return position;
+//		position = lastIndexOf(anEntry, position, numberOfEntries - 1, tail);
+//		return position;
 	}
 
 
@@ -220,11 +244,20 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 	@Override
 	public boolean contains(T anEntry) {
 		checkInitialization();
+
+//		// Iterative version
 //		boolean result = false;
-		// ADD CODE FOR ITERATIVE VERSION
+//		Node current = head;
+//
+//		while (current != null && !result) {
+//			if (current.getData().equals(anEntry)) {
+//				result = true;
+//			}
+//			current = current.getNextNode();
+//		}
 //		return result;
 
-		// Recursive version
+//		// Recursive version
 //		return contains(anEntry, head);
 
 
@@ -367,7 +400,7 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 
 		int index = 0;
 
-		// Iterative version
+//		// Iterative version
 //		Node current = head;
 //		while ((index < numberOfEntries) && (current != null)) {
 //			result[index] = current.getData();
@@ -402,7 +435,7 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 		// Assertion: (head != null) && (0 <= givenPosition) && (givenPosition < numberOfEntries)
 
 		// Traverse the list to locate the desired node (skipped if givenPosition is 0)
-		// Iterative version
+//		// Iterative version
 //		Node current = head;
 //
 //		for (int counter = 0; counter < givenPosition; counter++) {
@@ -434,7 +467,7 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 			return (current.getData().equals(anEntry) ? index :
 					indexOf(anEntry, position, index + 1, current.getNextNode()));
 
-			// Option 2
+//			// Option 2
 //			if (current.getData().equals(anEntry)) {
 //				return index;
 //			} else {
