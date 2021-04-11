@@ -3,9 +3,7 @@
  * using linked nodes.
  *
  * @author Trang Hoang (sect. 933)
- * @author Jared Roussel (sect. 933)
- * @author Brent Gannetta (sect. 932)
- * @version 1.5
+ * @version 2.0
  */
 
 import java.util.*;
