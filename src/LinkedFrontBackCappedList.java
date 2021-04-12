@@ -57,7 +57,7 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 			numberOfEntries++;
 		} else {
 			newNode.setNextNode(head);
-			head = newNode;
+			head = newNode;					// New node becomes the head
 			numberOfEntries++;
 		}
 		return result;
@@ -130,7 +130,7 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 			result = tail.getData();
 
 			if (numberOfEntries == 1) {
-				initializeDataFields();
+				initializeDataFields();			// or clear()
 			} else {
 				tail = getNodeAt(numberOfEntries - 2);
 				tail.setNextNode(null);
@@ -182,22 +182,22 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 		checkInitialization();
 		int position = -1;
 
-		// Iterative version
-		Node current = head;
-		int index = 0;
-
-		while (current != null && position < 0) {
-			if (current.getData().equals(anEntry)) {
-				position = index;
-			}
-			current = current.getNextNode();
-			index++;
-		}
-
-		return position;
+//		// Iterative version
+//		Node current = head;
+//		int index = 0;
+//
+//		while (current != null && position < 0) {
+//			if (current.getData().equals(anEntry)) {
+//				position = index;
+//			}
+//			current = current.getNextNode();
+//			index++;
+//		}
+//
+//		return position;
 
 		// Recursive version
-//		return indexOf(anEntry, position, 0, head);
+		return indexOf(anEntry, position, 0, head);
 	}
 
 
@@ -213,23 +213,23 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 		checkInitialization();
 		int position = -1;
 
-		// Iterative version
-		Node current = head;
-		int index = 0;
-
-		while (current != null) {
-			if (current.getData().equals(anEntry)) {
-				position = index;
-			}
-			current = current.getNextNode();
-			index++;
-		}
-
-		return position;
+//		// Iterative version
+//		Node current = head;
+//		int index = 0;
+//
+//		while (current != null) {
+//			if (current.getData().equals(anEntry)) {
+//				position = index;
+//			}
+//			current = current.getNextNode();
+//			index++;
+//		}
+//
+//		return position;
 
 		// Recursive version
-//		position = lastIndexOf(anEntry, position, numberOfEntries - 1, tail);
-//		return position;
+		position = lastIndexOf(anEntry, position, numberOfEntries - 1, tail);
+		return position;
 	}
 
 
@@ -324,22 +324,25 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 	@Override
 	public int compareTo(LinkedFrontBackCappedList<T> other) {
 		checkInitialization();
-		Node current = head;
-		Node otherCurrent = other.head;
 
 		if (this.isEmpty() && other.isEmpty()) {
 			return 0;
 		} else {
-			// Is there a recursive version perhaps or will it not be that efficient?
-			while ((current != null) && (otherCurrent != null)) {
-				if (current.getData().compareTo(otherCurrent.getData()) != 0) {
-					return current.getData().compareTo(otherCurrent.getData());
-				}
-				current = current.getNextNode();
-				otherCurrent = otherCurrent.getNextNode();
-			}
+//			// Iterative version
+//			Node current = head;
+//			Node otherCurrent = other.head;
+//			while ((current != null) && (otherCurrent != null)) {
+//				if (current.getData().compareTo(otherCurrent.getData()) != 0) {
+//					return current.getData().compareTo(otherCurrent.getData());
+//				}
+//				current = current.getNextNode();
+//				otherCurrent = otherCurrent.getNextNode();
+//			}
+//
+//			return Integer.compare(this.numberOfEntries, other.numberOfEntries);
 
-			return Integer.compare(this.numberOfEntries, other.numberOfEntries);
+			// Recursive version
+			return compareTo(head, other.head);
 		}
 	}
 
@@ -477,21 +480,24 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 
 	// Helper method for recursive version of lastIndexOf(T anEntry) method
 	private int lastIndexOf(T anEntry, int position, int index, Node current) {
-		// TBD: To be refined...may have duplicate code
 		if (current == null) {
 			return position;
-		} else {
-			if (current.getData().equals(anEntry)) {
+		} else if (current.getData().equals(anEntry)) {
 				return index;
-			} else {
-				if (index == 0) {
-					return position;
-				} else {
-					return lastIndexOf(anEntry, position, index - 1, getNodeAt(index - 1));
-				}
-			}
+		} else {
+			// Option 1
+			return (index == 0 ? position : lastIndexOf(anEntry, position, index - 1,
+					getNodeAt(index - 1)));
+
+//			// Option 2
+//			if (index == 0) {
+//				return position;
+//			} else {
+//				return lastIndexOf(anEntry, position, index - 1, getNodeAt(index - 1));
+//			}
 		}
 	}
+
 
 	// Helper method for recursive version of contains(T anEntry) method
 	private boolean contains(T anEntry, Node current) {
@@ -499,6 +505,22 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 			return false;
 		} else {
 			return (current.getData().equals(anEntry) || contains(anEntry, current.getNextNode()));
+		}
+	}
+
+
+	// Helper method to recursive version of compareTo(LinkedFrontBackCappedList<T> other) method
+	private int compareTo(Node current, Node other) {
+		if (current == null && other == null) {
+			return 0;
+		} else if (current == null) {
+			return -1;
+		} else if (other == null) {
+			return 1;
+		} else if (current.getData().compareTo(other.getData()) != 0) {
+			return current.getData().compareTo(other.getData());
+		} else {
+			return compareTo(current.getNextNode(), other.getNextNode());
 		}
 	}
 
