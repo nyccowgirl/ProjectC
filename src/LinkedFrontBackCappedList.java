@@ -111,6 +111,10 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 			numberOfEntries--;
 		}
 
+		if (numberOfEntries == 1) {
+			tail = head;
+		}
+
 		return result;
 	}
 
@@ -136,6 +140,10 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>> implemen
 				tail.setNextNode(null);
 				numberOfEntries--;
 			}
+		}
+
+		if (numberOfEntries == 1) {
+			tail = head;
 		}
 
 		return result;
